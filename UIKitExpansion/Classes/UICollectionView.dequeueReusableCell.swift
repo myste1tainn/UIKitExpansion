@@ -6,7 +6,7 @@ import UIKit
 import SwiftExpansion
 
 extension UICollectionView {
-  public func dequeueReusableCell<T: UITableViewCell>(ofType cellType: T.Type = T.self, at indexPath: IndexPath) -> T {
+  public func dequeueReusableCell<T: UICollectionViewCell>(ofType cellType: T.Type = T.self, at indexPath: IndexPath) -> T {
     guard let cell = dequeueReusableCell(withReuseIdentifier: cellType.reuseID,
                                          for: indexPath) as? T else {
       fatalError()
