@@ -3,9 +3,10 @@
 //
 
 import UIKit
+import SwiftExpansion
 
 extension UIStoryboard {
-  public func instantiate<T: UIViewController>(_ type: T.Type = T.self) -> T {
+  public func instantiate<T: Reusable>(_ type: T.Type = T.self) -> T {
     guard let viewController = instantiateViewController(withIdentifier: type.reuseID) as? T else {
       fatalError()
     }

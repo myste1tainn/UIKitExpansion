@@ -1,9 +1,9 @@
 PODS:
   - Nimble (7.3.4)
   - Quick (1.2.0)
-  - SwiftExpansion (0.2.2)
-  - UIKitExpansion (0.1.0):
-    - SwiftExpansion (~> 0.2)
+  - SwiftExpansion (1.0.1)
+  - UIKitExpansion (1.0.0):
+    - SwiftExpansion (~> 1.0)
 
 DEPENDENCIES:
   - Nimble (~> 7.0)
@@ -11,7 +11,7 @@ DEPENDENCIES:
   - UIKitExpansion (from `../`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - Nimble
     - Quick
     - SwiftExpansion
@@ -23,9 +23,9 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Nimble: 051e3d8912d40138fa5591c78594f95fb172af37
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
-  SwiftExpansion: 335601a67d1c9492aa8bdc139b3c6554f37a86d3
-  UIKitExpansion: 6108d4ce2c604512cfc59c5a976f036fff97aea3
+  SwiftExpansion: 2e267ccdac60cd00e5d1ffb35e3070bbf78b59e7
+  UIKitExpansion: 57d205a0bcf59104ece878a39d3865fe13c13651
 
 PODFILE CHECKSUM: 8a49b5131addbcde1ca38390ffd3635dcd79c7ed
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.4
