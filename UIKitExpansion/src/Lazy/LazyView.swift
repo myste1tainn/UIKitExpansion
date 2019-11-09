@@ -37,6 +37,10 @@ public class Lazy<View: UIView> {
     getLoader(View.self).layout(layout)
   }
   
+  public class func layoutWithSelf(_ layout: @escaping ViewLoader<View>.OnLayoutWithSelfHandler) -> ViewLoader<View> {
+    getLoader(View.self).layoutWithSelf(layout)
+  }
+  
   public class func postLayout(_ postLayout: @escaping ViewLoader<View>.OnPostLayoutHandler) -> ViewLoader<View> {
     getLoader(View.self).postLayout(postLayout)
   }
