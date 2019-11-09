@@ -24,8 +24,12 @@ public class ViewLoader<View: UIView> {
     if let superview = superview {
       return load {
         superview.addSubview($0)
-        let layout = onLayoutHandler ?? { $0.snapEdges() }
-        view.snp.makeConstraints { layout($0) }
+        if let layoutWithSelf = onLayoutWithSelfHandler {
+          view.snp.makeConstraints { layoutWithSelf($0, view) }
+        } else {
+          let layout = onLayoutHandler ?? { $0.snapEdges() }
+          view.snp.makeConstraints { layout($0) }
+        }
         view.layoutIfNeeded()
       }
     } else {
@@ -69,6 +73,14 @@ public class ViewLoader<View: UIView> {
     return self
   }
   
+  public typealias OnLayoutWithSelfHandler = (ConstraintMaker, View) -> ()
+  private var onLayoutWithSelfHandler: OnLayoutWithSelfHandler?
+  
+  @discardableResult
+  public func layoutWithSelf(_ block: @escaping OnLayoutWithSelfHandler) -> Self {
+    onLayoutWithSelfHandler = block
+    return self
+  }
   
   public typealias OnPostLayoutHandler = (View) -> ()
   private var onPostLayoutHandler: OnPostLayoutHandler?

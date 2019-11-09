@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'UIKitExpansion'
-  s.version          = '1.2.0'
+  s.version          = '1.2.1'
   s.summary          = 'Code extension, object and function on top of Apple\'s UIKit'
   s.description      = <<-DESC
   This library provide convenience functions, object and extension over Apple's UIKit framework
