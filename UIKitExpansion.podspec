@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'UIKitExpansion'
-  s.version          = '1.0.0'
+  s.version          = '1.2.0'
   s.summary          = 'Code extension, object and function on top of Apple\'s UIKit'
   s.description      = <<-DESC
   This library provide convenience functions, object and extension over Apple's UIKit framework
@@ -13,7 +13,8 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/myste1tainn/UIKitExpansion.git', :tag => s.version.to_s }
   s.ios.deployment_target = '8.0'
   s.swift_version = '5.1'
-  s.source_files = 'UIKitExpansion/Classes/**/*'
+  s.source_files = 'UIKitExpansion/src/**/*'
   s.frameworks = 'UIKit'
-  s.dependency 'SwiftExpansion', '~> 1.0'
+  s.dependency 'RxSwiftExpansion', '~> 1.0'
+  s.dependency 'SnapKit', '~> 5.0'
 end

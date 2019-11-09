@@ -2,7 +2,7 @@ PODS:
   - Nimble (7.3.4)
   - Quick (1.2.0)
   - SwiftExpansion (1.0.1)
-  - UIKitExpansion (1.0.0):
+  - UIKitExpansion (1.2.0):
     - SwiftExpansion (~> 1.0)
 
 DEPENDENCIES:
@@ -24,7 +24,7 @@ SPEC CHECKSUMS:
   Nimble: 051e3d8912d40138fa5591c78594f95fb172af37
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
   SwiftExpansion: 2e267ccdac60cd00e5d1ffb35e3070bbf78b59e7
-  UIKitExpansion: 57d205a0bcf59104ece878a39d3865fe13c13651
+  UIKitExpansion: 54266e0f884d9bb6b3a1c9a84c662147e72e2127
 
 PODFILE CHECKSUM: 8a49b5131addbcde1ca38390ffd3635dcd79c7ed
 
