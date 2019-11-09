@@ -7,15 +7,15 @@ import Foundation
 import UIKit
 
 extension Animating {
-  func translateToOriginFromRelative(x: CGFloat = 0.0,
-                                     y: CGFloat = 0.0,
-                                     duration: TimeInterval = 0.4,
-                                     delay: TimeInterval = 0.0,
-                                     spring: Bool = false,
-                                     damping: CGFloat = 0.75,
-                                     velocity: CGFloat = 0.9,
-                                     animated: Bool = true,
-                                     completion: @escaping () -> Void = {}) {
+  public func translateToOriginFromRelative(x: CGFloat = 0.0,
+                                            y: CGFloat = 0.0,
+                                            duration: TimeInterval = 0.4,
+                                            delay: TimeInterval = 0.0,
+                                            spring: Bool = false,
+                                            damping: CGFloat = 0.75,
+                                            velocity: CGFloat = 0.9,
+                                            animated: Bool = true,
+                                            completion: @escaping () -> Void = {}) {
     let original = view.transform
     view.transform = CGAffineTransform(translationX: x, y: y)
     if animated {
@@ -41,15 +41,15 @@ extension Animating {
     }
   }
   
-  func translate(x: CGFloat = 0.0,
-                 y: CGFloat = 0.0,
-                 duration: TimeInterval = 0.4,
-                 delay: TimeInterval = 0.0,
-                 spring: Bool = false,
-                 damping: CGFloat = 0.75,
-                 velocity: CGFloat = 0.9,
-                 animated: Bool = true,
-                 completion: @escaping () -> Void = {}) {
+  public func translate(x: CGFloat = 0.0,
+                        y: CGFloat = 0.0,
+                        duration: TimeInterval = 0.4,
+                        delay: TimeInterval = 0.0,
+                        spring: Bool = false,
+                        damping: CGFloat = 0.75,
+                        velocity: CGFloat = 0.9,
+                        animated: Bool = true,
+                        completion: @escaping () -> Void = {}) {
     let animations: () -> Void = { [weak view] in
       view?.transform = CGAffineTransform(translationX: x, y: y)
     }

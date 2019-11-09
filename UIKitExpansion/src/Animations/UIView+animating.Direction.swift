@@ -6,7 +6,7 @@
 import Foundation
 
 extension Animating {
-  enum Direction {
+  public enum Direction {
     case up
     case down
     case left

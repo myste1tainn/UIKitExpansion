@@ -7,20 +7,20 @@ import Foundation
 import UIKit
 import SnapKit
 
-class ViewLoader<View: UIView> {
+public class ViewLoader<View: UIView> {
   var view: View
   
-  init(view: View) {
+  public init(view: View) {
     self.view = view
   }
   
-  func releases() {
+  public func releases() {
     onConfigureHandler = nil
     onLayoutHandler = nil
     onPostLayoutHandler = nil
   }
   
-  func load(to superview: UIView? = nil) -> View {
+  public func load(to superview: UIView? = nil) -> View {
     if let superview = superview {
       return load {
         superview.addSubview($0)
@@ -38,7 +38,7 @@ class ViewLoader<View: UIView> {
     }
   }
   
-  func load(with fn: (View) -> Void) -> View {
+  public func load(with fn: (View) -> Void) -> View {
     defer { releases() }
     view.translatesAutoresizingMaskIntoConstraints = false
     onConfigureHandler.flatMap {
@@ -51,30 +51,30 @@ class ViewLoader<View: UIView> {
     return view
   }
   
-  typealias OnConfigureHandler = (View) -> ()
+  public typealias OnConfigureHandler = (View) -> ()
   private var onConfigureHandler: OnConfigureHandler?
   
   @discardableResult
-  func configure(_ block: @escaping OnConfigureHandler) -> Self {
+  public func configure(_ block: @escaping OnConfigureHandler) -> Self {
     onConfigureHandler = block
     return self
   }
   
-  typealias OnLayoutHandler = (ConstraintMaker) -> ()
+  public typealias OnLayoutHandler = (ConstraintMaker) -> ()
   private var onLayoutHandler: OnLayoutHandler?
   
   @discardableResult
-  func layout(_ block: @escaping OnLayoutHandler) -> Self {
+  public func layout(_ block: @escaping OnLayoutHandler) -> Self {
     onLayoutHandler = block
     return self
   }
   
   
-  typealias OnPostLayoutHandler = (View) -> ()
+  public typealias OnPostLayoutHandler = (View) -> ()
   private var onPostLayoutHandler: OnPostLayoutHandler?
   
   @discardableResult
-  func postLayout(_ block: @escaping OnPostLayoutHandler) -> Self {
+  public func postLayout(_ block: @escaping OnPostLayoutHandler) -> Self {
     onPostLayoutHandler = block
     return self
   }

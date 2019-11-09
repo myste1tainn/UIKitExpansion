@@ -7,15 +7,15 @@ import Foundation
 import UIKit
 
 extension Animating {
-  func slideIn(fromRelativeX x: CGFloat,
-               y: CGFloat,
-               duration: TimeInterval = 0.4,
-               delay: TimeInterval = 0,
-               spring: Bool = false,
-               damping: CGFloat = 0.75,
-               velocity: CGFloat = 0.9,
-               options: UIView.AnimationOptions = [],
-               completion: @escaping () -> Void = {}) {
+  public func slideIn(fromRelativeX x: CGFloat,
+                      y: CGFloat,
+                      duration: TimeInterval = 0.4,
+                      delay: TimeInterval = 0,
+                      spring: Bool = false,
+                      damping: CGFloat = 0.75,
+                      velocity: CGFloat = 0.9,
+                      options: UIView.AnimationOptions = [],
+                      completion: @escaping () -> Void = {}) {
     let originalTransform = view.transform
     view.transform = CGAffineTransform(translationX: x, y: y)
     let animations: (View?) -> Void = { view in view?.transform = originalTransform }
@@ -35,14 +35,14 @@ extension Animating {
     }
   }
   
-  func slideOut(direction: Direction = .left,
-                duration: TimeInterval = 0.4,
-                delay: TimeInterval = 0,
-                spring: Bool = false,
-                damping: CGFloat = 0.75,
-                velocity: CGFloat = 0.9,
-                options: UIView.AnimationOptions = [],
-                completion: @escaping () -> Void = {}) {
+  public func slideOut(direction: Direction = .left,
+                       duration: TimeInterval = 0.4,
+                       delay: TimeInterval = 0,
+                       spring: Bool = false,
+                       damping: CGFloat = 0.75,
+                       velocity: CGFloat = 0.9,
+                       options: UIView.AnimationOptions = [],
+                       completion: @escaping () -> Void = {}) {
     let order = xy(direction: direction)
     let animations = { [weak view] in
       switch direction {

@@ -8,14 +8,14 @@ import UIKit
 
 private var animatingKey: Int = 0
 
-protocol Animatable {
+public protocol Animatable {
   associatedtype View: UIView
   
   var animating: Animating<View> { get set }
 }
 
 extension Animatable where Self: UIView {
-  var animating: Animating<Self> {
+  public var animating: Animating<Self> {
     get { return objc_getAssociatedObject(self, &animatingKey) as? Animating ?? .new(self) }
     set {
       objc_setAssociatedObject(self, &animatingKey, newValue, .OBJC_ASSOCIATION_ASSIGN)
@@ -26,7 +26,7 @@ extension Animatable where Self: UIView {
 extension UIView: Animatable {
 }
 
-struct Animating<View: UIView> {
+public struct Animating<View: UIView> {
   
   var view: View
   
@@ -34,14 +34,14 @@ struct Animating<View: UIView> {
     self.view = view
   }
   
-  static func new(_ view: View) -> Animating<View> {
+  public static func new(_ view: View) -> Animating<View> {
     return .init(view)
   }
   
-  func animate(duration: TimeInterval = 0.3,
-               delay: TimeInterval = 0,
-               options: UIView.AnimationOptions = [],
-               animations: @escaping (View?) -> Void) {
+  public func animate(duration: TimeInterval = 0.3,
+                      delay: TimeInterval = 0,
+                      options: UIView.AnimationOptions = [],
+                      animations: @escaping (View?) -> Void) {
     animate(duration: duration,
             delay: delay,
             options: options,
@@ -49,11 +49,11 @@ struct Animating<View: UIView> {
             completion: {})
   }
   
-  func animate(duration: TimeInterval = 0.3,
-               delay: TimeInterval = 0,
-               options: UIView.AnimationOptions = [],
-               animations: @escaping (View?) -> Void,
-               completion: @escaping () -> Void = {}) {
+  public func animate(duration: TimeInterval = 0.3,
+                      delay: TimeInterval = 0,
+                      options: UIView.AnimationOptions = [],
+                      animations: @escaping (View?) -> Void,
+                      completion: @escaping () -> Void = {}) {
     UIView.animate(withDuration: duration,
                    delay: delay,
                    options: options,
@@ -61,11 +61,11 @@ struct Animating<View: UIView> {
                    completion: { _ in completion() })
   }
   
-  func springAnimate(duration: TimeInterval = 0.3,
-                     delay: TimeInterval = 0,
-                     damping: CGFloat = 0.75,
-                     velocity: CGFloat = 0.9,
-                     animations: @escaping (View?) -> Void) {
+  public func springAnimate(duration: TimeInterval = 0.3,
+                            delay: TimeInterval = 0,
+                            damping: CGFloat = 0.75,
+                            velocity: CGFloat = 0.9,
+                            animations: @escaping (View?) -> Void) {
     springAnimate(duration: duration,
                   delay: delay,
                   damping: damping,
@@ -74,12 +74,12 @@ struct Animating<View: UIView> {
                   completion: {})
   }
   
-  func springAnimate(duration: TimeInterval = 0.3,
-                     delay: TimeInterval = 0,
-                     damping: CGFloat = 0.75,
-                     velocity: CGFloat = 0.9,
-                     animations: @escaping (View?) -> Void,
-                     completion: @escaping () -> Void = {}) {
+  public func springAnimate(duration: TimeInterval = 0.3,
+                            delay: TimeInterval = 0,
+                            damping: CGFloat = 0.75,
+                            velocity: CGFloat = 0.9,
+                            animations: @escaping (View?) -> Void,
+                            completion: @escaping () -> Void = {}) {
     UIView.animate(withDuration: duration,
                    delay: delay,
                    usingSpringWithDamping: damping,
@@ -89,7 +89,7 @@ struct Animating<View: UIView> {
   }
   
   
-  func wobbleFromLargest(x: CGFloat = 1, y: CGFloat = 1, endAnimations: @escaping (View?) -> Void) {
+  public func wobbleFromLargest(x: CGFloat = 1, y: CGFloat = 1, endAnimations: @escaping (View?) -> Void) {
     view.animating.scale(x: x, y: y, duration: 0.1) { [weak view] in
       view?.animating.animate(duration: 0.1, delay: 0.1) {
         endAnimations($0)
