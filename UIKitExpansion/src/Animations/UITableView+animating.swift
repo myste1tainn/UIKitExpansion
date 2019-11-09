@@ -54,8 +54,8 @@ class Animator {
 }
 
 extension UITableView {
-  typealias CellAnimation = (UITableViewCell, IndexPath) -> Void
-  static var cellAnimation: CellAnimation = { cell, indexPath in
+  public typealias CellAnimation = (UITableViewCell, IndexPath) -> Void
+  public static var cellAnimation: CellAnimation = { cell, indexPath in
     let delay = 0.025 * Double(indexPath.row + indexPath.section)
     cell.alpha = 0
     cell.animating.fadeIn(delay: delay)
@@ -68,8 +68,8 @@ extension UITableView {
                                                  velocity: 0.5)
   }
   
-  typealias ViewAnimation = (UIView, Int) -> Void
-  static var viewAnimation: ViewAnimation = { cell, section in
+  public typealias ViewAnimation = (UIView, Int) -> Void
+  public static var viewAnimation: ViewAnimation = { cell, section in
     let delay = 0.025 * Double(section)
     cell.alpha = 0
     cell.animating.fadeIn(delay: delay)

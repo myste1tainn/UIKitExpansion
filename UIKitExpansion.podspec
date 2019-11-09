@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '10.0'
   s.swift_version = '5.1'
   s.source_files = 'UIKitExpansion/src/**/*'
-  s.frameworks = 'UIKit'
+  s.frameworks = 'UIKit', 'CoreGraphics'
   s.dependency 'RxSwiftExpansion', '~> 1.0'
   s.dependency 'SnapKit', '~> 5.0'
 end

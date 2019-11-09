@@ -8,7 +8,7 @@ import UIKit
 
 private var animatingKey: Int = 0
 
-protocol Animatable {
+public protocol Animatable {
   associatedtype View: UIView
   
   var animating: Animating<View> { get set }
