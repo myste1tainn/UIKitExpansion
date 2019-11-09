@@ -7,7 +7,7 @@ import Foundation
 import UIKit
 
 extension UIView {
-  func alignBoundsConstraints(to view: UIView) {
+  public func alignBoundsConstraints(to view: UIView) {
     translatesAutoresizingMaskIntoConstraints = false
     view.addConstraints(
       NSLayoutConstraint.constraints(withVisualFormat: "V:|[view]|", metrics: nil, views: ["view": self])

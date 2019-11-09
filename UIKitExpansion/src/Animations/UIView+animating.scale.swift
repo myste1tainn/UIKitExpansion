@@ -7,15 +7,15 @@ import Foundation
 import UIKit
 
 extension Animating {
-  func scale(x: CGFloat,
-             y: CGFloat,
-             duration: TimeInterval = 0.3,
-             delay: TimeInterval = 0,
-             options: UIView.AnimationOptions = [],
-             spring: Bool = false,
-             damping: CGFloat = 0.75,
-             velocity: CGFloat = 0.9,
-             completion: @escaping () -> Void = {}) {
+  public func scale(x: CGFloat,
+                    y: CGFloat,
+                    duration: TimeInterval = 0.3,
+                    delay: TimeInterval = 0,
+                    options: UIView.AnimationOptions = [],
+                    spring: Bool = false,
+                    damping: CGFloat = 0.75,
+                    velocity: CGFloat = 0.9,
+                    completion: @escaping () -> Void = {}) {
     let animations: () -> Void = { [weak view] in
       view?.transform = CGAffineTransform(scaleX: x, y: y)
     }
@@ -36,18 +36,18 @@ extension Animating {
     }
   }
   
-  func scale(factor: CGFloat,
-             duration: TimeInterval = 0.3,
-             delay: TimeInterval = 0,
-             completion: @escaping () -> Void = {}) {
+  public func scale(factor: CGFloat,
+                    duration: TimeInterval = 0.3,
+                    delay: TimeInterval = 0,
+                    completion: @escaping () -> Void = {}) {
     scale(x: factor, y: factor, duration: duration, delay: delay, completion: completion)
   }
   
-  func scale(from fromXY: CGFloat,
-             to toXY: CGFloat,
-             duration: TimeInterval = 0.3,
-             delay: TimeInterval = 0,
-             completion: @escaping () -> Void = {}) {
+  public func scale(from fromXY: CGFloat,
+                    to toXY: CGFloat,
+                    duration: TimeInterval = 0.3,
+                    delay: TimeInterval = 0,
+                    completion: @escaping () -> Void = {}) {
     view.transform = CGAffineTransform(scaleX: fromXY, y: fromXY)
     scale(factor: toXY, duration: duration, delay: delay, completion: completion)
   }

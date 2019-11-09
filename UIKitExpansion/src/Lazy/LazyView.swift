@@ -6,11 +6,11 @@
 import Foundation
 import SnapKit
 
-class Lazy<View: UIView> {
-  typealias Config = (ConstraintMaker) -> Void
-  typealias PreConfig = (View) -> Void
+public class Lazy<View: UIView> {
+  public typealias Config = (ConstraintMaker) -> Void
+  public typealias PreConfig = (View) -> Void
   
-  class func getView<VT: UIView>(_ viewType: VT.Type) -> VT {
+  public class func getView<VT: UIView>(_ viewType: VT.Type) -> VT {
     if let collectionType = viewType as? UICollectionView.Type {
       let layout = UICollectionViewFlowLayout()
       layout.minimumLineSpacing = 8
@@ -21,27 +21,27 @@ class Lazy<View: UIView> {
     }
   }
   
-  class func getLoader<VT: UIView>(_ viewType: VT.Type) -> ViewLoader<VT> {
+  public class func getLoader<VT: UIView>(_ viewType: VT.Type) -> ViewLoader<VT> {
     return ViewLoader(view: getView(viewType))
   }
   
-  class func load(to superview: UIView? = nil) -> View {
+  public class func load(to superview: UIView? = nil) -> View {
     return getLoader(View.self).load(to: superview)
   }
   
-  class func load(with fn: (View) -> Void) -> View {
+  public class func load(with fn: (View) -> Void) -> View {
     return getLoader(View.self).load(with: fn)
   }
   
-  class func layout(_ layout: @escaping ViewLoader<View>.OnLayoutHandler) -> ViewLoader<View> {
+  public class func layout(_ layout: @escaping ViewLoader<View>.OnLayoutHandler) -> ViewLoader<View> {
     return getLoader(View.self).layout(layout)
   }
   
-  class func postLayout(_ postLayout: @escaping ViewLoader<View>.OnPostLayoutHandler) -> ViewLoader<View> {
+  public class func postLayout(_ postLayout: @escaping ViewLoader<View>.OnPostLayoutHandler) -> ViewLoader<View> {
     return getLoader(View.self).postLayout(postLayout)
   }
   
-  class func configure(_ configure: @escaping ViewLoader<View>.OnConfigureHandler) -> ViewLoader<View> {
+  public class func configure(_ configure: @escaping ViewLoader<View>.OnConfigureHandler) -> ViewLoader<View> {
     return getLoader(View.self).configure(configure)
   }
 }

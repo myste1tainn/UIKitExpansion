@@ -10,7 +10,7 @@ import RxCocoa
 
 
 extension Animating where View: UITableView {
-  func setAnimateInCells(_ animations: @escaping UITableView.CellAnimation = UITableView.cellAnimation) -> Disposable {
+  public func setAnimateInCells(_ animations: @escaping UITableView.CellAnimation = UITableView.cellAnimation) -> Disposable {
     let animator = Animator(delayFactor: 0.025)
     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
       animator.delayFactor = 0
@@ -20,7 +20,7 @@ extension Animating where View: UITableView {
 }
 
 extension Animating where View: UICollectionView {
-  func setAnimateInCells(_ animations: @escaping UITableView.CellAnimation = UITableView.cellAnimation) -> Disposable {
+  public func setAnimateInCells(_ animations: @escaping UITableView.CellAnimation = UITableView.cellAnimation) -> Disposable {
     let animator = Animator(delayFactor: 0.005)
     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
       animator.delayFactor = 0
@@ -38,7 +38,7 @@ class Animator {
   
   typealias Animation = (UIView, IndexPath) -> Void
   lazy var animations: Animation = {
-     { cell, i in
+    { cell, i in
       let delay = self.delayFactor * Double(i.row + i.section)
       cell.alpha = 0
       cell.animating.fadeIn(delay: delay)

@@ -7,17 +7,17 @@ import Foundation
 import UIKit
 
 extension Animating {
-  func fadeIn(duration: TimeInterval = 0.2,
-              delay: TimeInterval = 0,
-              completion: @escaping () -> Void = {}) {
+  public func fadeIn(duration: TimeInterval = 0.2,
+                     delay: TimeInterval = 0,
+                     completion: @escaping () -> Void = {}) {
     UIView.animate(withDuration: duration, delay: delay, animations: { [weak view] in
       view?.alpha = 1
     }, completion: { _ in completion() })
   }
   
-  func fadeOut(duration: TimeInterval = 0.2,
-               delay: TimeInterval = 0,
-               completion: @escaping () -> Void = {}) {
+  public func fadeOut(duration: TimeInterval = 0.2,
+                      delay: TimeInterval = 0,
+                      completion: @escaping () -> Void = {}) {
     UIView.animate(withDuration: duration, delay: delay, animations: { [weak view] in
       view?.alpha = 0
     }, completion: { _ in completion() })
